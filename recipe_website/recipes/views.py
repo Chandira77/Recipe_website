@@ -16,6 +16,8 @@ def index(request):
 """
 from django.shortcuts import render, get_object_or_404, redirect
 
+from recipe_website import recipes
+
 # from recipe_website import recipes
 from .models import Recipes
 from .forms import RecipeForm
