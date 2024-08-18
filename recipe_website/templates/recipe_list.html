@@ -1,0 +1,29 @@
+<!-- templates/recipes/recipe_list.html -->
+<h1>Recipe List</h1>
+<a href="{% url 'recipe_create' %}">Create New Recipe</a>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.name }}</td>
+                <td>{{ recipe.category }}</td>
+                <td>{{ recipe.description }}</td>
+                <td>
+                    <a href="{% url 'recipe_detail' recipe.pk %}">View</a>
+                    <a href="{% url 'recipe_update' recipe.pk %}">Edit</a>
+                    <form method="POST" action="{% url 'recipe_delete' recipe.pk %}" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,13 @@
+<!-- templates/recipes/recipe_detail.html -->
+<h1>{{ recipe.name }}</h1>
+<p>Category: {{ recipe.category }}</p>
+<p>Description: {{ recipe.description }}</p>
+<p>Ingredients: {{ recipe.ingredients }}</p>
+<p>Process: {{ recipe.process }}</p>
+<img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" width="300" />
+<a href="{% url 'recipe_update' recipe.pk %}">Edit</a>
+<form method="POST" action="{% url 'recipe_delete' recipe.pk %}">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+</form>
+<a href="{% url 'recipe_list' %}">Back to list</a>

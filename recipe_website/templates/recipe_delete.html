@@ -1,0 +1,8 @@
+<!-- templates/recipes/recipe_confirm_delete.html -->
+<h1>Delete Recipe</h1>
+<p>Are you sure you want to delete "{{ recipe.name }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'recipe_list' %}">Cancel</a>
+</form>
