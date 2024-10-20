@@ -16,19 +16,20 @@ def index(request):
 """
 from django.shortcuts import render, get_object_or_404, redirect
 
-from recipe_website import recipes
+#from recipe_website import recipes
 
 # from recipe_website import recipes
 from .models import Recipes
 from .forms import RecipeForm
 
-def recipe_list(request):
+def recipe_list(request,):
     recipes = Recipes.objects.all()
     return render(request, 'recipe_list.html', {'recipes': recipes})
 
+
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipes, pk=pk)
-    return render(request, 'recipe_detail.html', {'recipes': recipes})
+    return render(request, 'recipe_detail.html', {'recipe': recipe})
 
 def recipe_create(request):
     if request.method == 'POST':
